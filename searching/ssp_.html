@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Searching Js</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background: #5D1E89;
+  background: -webkit-linear-gradient(top left, #5D1E89, #C4529C);
+  background: -moz-linear-gradient(top left, #5D1E89, #C4529C);
+  background: linear-gradient(to bottom right, #5D1E89, #C4529C);
+  padding: 5px;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 827px; /* only for demonstration, should be removed */
+  background: #F9F0FF;
+  background: -webkit-linear-gradient(top left, #F9F0FF, #FE09A8);
+  background: -moz-linear-gradient(top left, #F9F0FF, #FE09A8);
+  background: linear-gradient(to bottom right, #F9F0FF, #FE09A8);
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+/* Style the search box */
+#Search {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid rgb(221, 221, 221);
+}
+
+/* Style the navigation menu inside the left column */
+#Menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#Menu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#Menu li a:hover {
+  background-color: rgb(196, 101, 156);
+  color: white;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 100%; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: rgb(24, 23, 24);
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h3>Wonders of the World</h3>
+</header>
+
+<section>
+  <nav>
+    <input type="text" id="Search" onkeyup="searchFunction()" placeholder="Search.." title="Type in a category" autocomplete="">
+    <ul id="Menu">
+        <li><a href="#">Content-1</a></li>
+        <li><a href="#">Content-2</a></li>
+        <li><a href="#">Content-3</a></li>
+        <li><a href="#">Content-4</a></li>
+        <li><a href="#">Content-5</a></li>
+        <li><a href="#">Content-6</a></li>
+        <li><a href="#">Content-7</a></li>
+        <li><a href="#">Content-8</a></li>
+        <li><a href="#">Content-9</a></li>
+        <li><a href="#">Content-10</a></li>
+        <li><a href="#">Content-11</a></li>
+        <li><a href="#">Content-12</a></li>
+        <li><a href="#">Content-13</a></li>
+        <li><a href="#">Content-14</a></li>
+        <li><a href="#">Content-15</a></li>
+        <li><a href="#">Content-16</a></li>
+        <li><a href="#">Content-17</a></li>
+        <li><a href="#">Content-18</a></li>
+      </ul>
+  </nav>
+  
+  <article>
+    <img alt="hero" style="width:330px; height:390px;" src="../img/japan.png">
+    <img alt="hero" style="width:550px; height:390px;" src="../img/japan2.png">
+    <div class="text-center lg:w-2/3 w-full">
+      <h1 style="text-align: center;">Japan</h1>
+    </div>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero.</p>
+    <p>Debitis dolores, porro dicta veniam reprehenderit quidem fugit qui culpa impedit sapiente cupiditate provident ab, ipsa pariatur placeat, accusamus consequuntur nemo. Libero. who named it Londinium.</p><br><br>
+    <p>Some text..</p>
+  </article>
+</section>
+
+<footer>
+  <p>Copyright 2021</p>
+</footer>
+
+
+<script>
+    function searchFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("Search");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("Menu");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) 
+        {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    </script>
+</body>
+</html>
+

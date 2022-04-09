@@ -1,0 +1,2 @@
+1. If there is an error in the data, then you can click button update to change the data
+2. If the data is no longer needed, please click delete button, then the data will be deleted
